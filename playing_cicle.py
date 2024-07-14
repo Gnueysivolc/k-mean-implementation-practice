@@ -30,7 +30,27 @@ def generate_points():
         fig.add_trace(go.Scatter(x=x, y=y, mode='markers', marker=dict(color='red', size=2)))
 
     # Update the figure
-    fig.update_layout(width=500, height=500, title='Circle in a Square')
+    fig.update_layout(
+    title='circle data', 
+    xaxis=dict(
+            range=[0, 819.1],
+            anchor='x',
+            showgrid=False,
+            zeroline=False
+        ),
+        yaxis=dict(
+            range=[0, 500],
+            anchor='y',
+            showgrid=False,
+            zeroline=False
+        ),
+    barmode='overlay', 
+    plot_bgcolor='rgb(245,245,245)',
+    legend=dict(
+        x=0.02,
+        y=0.95),
+    margin=dict(t=0, b=0, l=0, r=0)
+)
 
     
 
@@ -41,3 +61,4 @@ for i in range(10000):
 
 
 fig.show(config={'displayModeBar': False})
+fig.write_html('circle_in_square.html')
