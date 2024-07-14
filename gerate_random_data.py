@@ -14,10 +14,33 @@ def generate_data(num_of_points, center_x, center_y, radius, color):
     for i in range(num_of_points):
         x_values[i] = center_x + length[i] * np.cos(theta[i])
         y_values[i] = center_y + length[i] * np.sin(theta[i])
-        fig.add_trace(go.Scatter(x=x_values, y=y_values, mode='markers', marker=dict(color=color, size=2)))
+        fig.add_trace(go.Scatter(x=x_values, y=y_values, mode='markers', marker=dict(color=color, size=5)))
     
     # Update the figure
-    fig.update_layout(width=500, height=500, title='Circle in a Square')
+    fig.update_layout(
+    title='circle data', 
+    xaxis=dict(
+            range=[0, 500],
+            anchor='x',
+            showgrid=False,
+            zeroline=False
+        ),
+        yaxis=dict(
+            range=[0, 500],
+            anchor='y',
+            showgrid=False,
+            zeroline=False
+        ),
+    barmode='overlay', 
+    plot_bgcolor='rgb(245,245,245)',
+    legend=dict(
+        x=0.02,
+        y=0.95),
+    margin=dict(t=0, b=0, l=0, r=0)
+)
+
+
+
 
 num_of_points = 100     # number of points for each circle data
 center_x = [150, 300, 425, 250, 375, 225]
