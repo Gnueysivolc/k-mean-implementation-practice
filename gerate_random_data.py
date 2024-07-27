@@ -11,8 +11,8 @@ guess_centers = np.array([[150, 200], [300, 230], [425, 193], [250, 250], [375, 
 
 which_cluster = []  # store which cluster each point belongs to
 
-cluster_x = []
-cluster_y = []
+cluster_x = np.zeros((6, 0))
+cluster_y = np.zeros((6, 0))
 
 num_of_points = 100     # number of points for each circle data
 center_x = [150, 300, 425, 250, 375, 225]   # center for generating data
@@ -37,8 +37,8 @@ def generate_data(num_of_points, center_x, center_y, radius, color):
         x_values[i] = center_x + length[i] * np.cos(theta[i])  # x = center * random length and random angle
         y_values[i] = center_y + length[i] * np.sin(theta[i])  # y = center * random length and random angle
         fig.add_trace(go.Scatter(x=x_values, y=y_values, mode='markers', marker=dict(color=color, size=5)))
-        all_x_values.extend(x_values)   # return all data points in one x and y array
-        all_y_values.extend(y_values) 
+        all_x_values.append(x_values[i])   # return all data points in one x and y array
+        all_y_values.append(y_values[i]) 
     
   
     
@@ -75,17 +75,13 @@ def assign_to_cluster(guess_centers, x, y):
             distances.append(distance)
         closest_index = np.argmin(distances)
         which_cluster.append(closest_index)  # store which cluster each point belongs to
-
+        cluster_x[closest_index] += x[i]
+        cluster_y[closest_index] += y[i]
+        distances = []
+    new_guess_center_x = cluster_x / len(x)
+    new_guess_center_y = cluster_y / len(y)
     all_colour = [color[cluster] for cluster in which_cluster]
-
-    for i in range(len(guess_centers)):
-        cluster_x[i] += (x[j] for j in range(len(which_cluster)) if which_cluster[j] == i)
-        cluster_y[i] += (y[j] for j in range(len(which_cluster)) if which_cluster[j] == i)
-
-    return 0
-
-
-
+    return new_guess_center_x, new_guess_center_y, all_colour
 
 
 
@@ -93,6 +89,7 @@ def assign_to_cluster(guess_centers, x, y):
 
 for i in range(6):
     generate_data(num_of_points, center_x[i], center_y[i], radius, color[i])
+
 
 '''
 for x, y in zip(all_x_values, all_y_values):
@@ -104,6 +101,21 @@ fig.show(config={'displayModeBar': False})
 print('showing the first time, random data')
 
 
+
+
+
+
+fig.data = []  # Clear the figure
+which_cluster = []
+
+new_x, new_y, all_colour = assign_to_cluster(guess_centers, all_x_values, all_y_values)
+
+print(all_colour)
+ # Update the colors of all data points
+fig.add_trace(go.Scatter(x=all_x_values, y=all_y_values, mode='markers', marker=dict(color=all_colour, size=5)))
+
+fig.show(config={'displayModeBar': False})
+'''
 for i in range (times):
     fig.data = []  # Clear the figure
     which_cluster = []
@@ -124,3 +136,4 @@ for i in range (times):
         guess_centers[i][1] = cluster_y[i] / len(all_y_values)
 
 
+'''
