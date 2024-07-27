@@ -11,8 +11,8 @@ guess_centers = np.array([[150, 200], [300, 230], [425, 193], [250, 250], [375, 
 
 which_cluster = []  # store which cluster each point belongs to
 
-cluster_x = [len(guess_centers)]
-cluster_y = [len(guess_centers)]
+cluster_x = []
+cluster_y = []
 
 num_of_points = 100     # number of points for each circle data
 center_x = [150, 300, 425, 250, 375, 225]   # center for generating data
@@ -79,8 +79,8 @@ def assign_to_cluster(guess_centers, x, y):
     all_colour = [color[cluster] for cluster in which_cluster]
 
     for i in range(len(guess_centers)):
-        cluster_x[i] += sum(x[j] for j in range(len(which_cluster)) if which_cluster[j] == i)
-        cluster_y[i] += sum(y[j] for j in range(len(which_cluster)) if which_cluster[j] == i)
+        cluster_x[i] += (x[j] for j in range(len(which_cluster)) if which_cluster[j] == i)
+        cluster_y[i] += (y[j] for j in range(len(which_cluster)) if which_cluster[j] == i)
 
     return 0
 
@@ -101,28 +101,23 @@ for x, y in zip(all_x_values, all_y_values):
 
 fig.show(config={'displayModeBar': False})
 
-
 print('showing the first time, random data')
 
 
 for i in range (times):
-
+    fig.data = []  # Clear the figure
     which_cluster = []
+
     assign_to_cluster(guess_centers, all_x_values, all_y_values)
 
     # Update the colors of all data points
-    fig.update_traces(marker=dict(color=all_colour))
+    fig.add_trace(go.Scatter(x=all_x_values, y=all_y_values, mode='markers', marker=dict(color=all_colour, size=5)))
 
     for i in range(k):
         fig.add_trace(go.Scatter(x=guess_centers[i][0], y=guess_centers[i][0], mode='markers', marker=dict(color=color[i], size=20)))
 
     fig.show(config={'displayModeBar': False})
     print('showing the ', i+1, 'time, k-mean data')
-          
-    # Remove the traces for the guess centers
-    for i in range(len(guess_centers)):
-        fig.data.pop(1)  # Remove the second trace (index 1) each time
-
 
     for i in range(k):
         guess_centers[i][0] = cluster_x[i] / len(all_x_values)
