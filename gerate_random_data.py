@@ -1,13 +1,25 @@
 import plotly.graph_objects as go
 import numpy as np
 
-times = 3   #number of time running k-mean
+times = 5   #number of time running k-mean
 k=6 # number of guess clusters
-"""
-guess_centers = np.random.randint(0, 100, (k, 2))  # guess k random centers
 
-"""
-guess_centers = np.array([[150, 200], [300, 230], [425, 193], [250, 250], [375, 280], [225, 250]])
+
+
+
+# Define the range for the guess centers
+x_min, x_max = 150, 425
+y_min, y_max = 193, 280
+
+# Generate 6 random guess centers within the specified range
+guess_centers = np.array([[np.random.randint(x_min, x_max), np.random.randint(y_min, y_max)] for _ in range(6)])# guess k random centers
+
+
+
+
+
+
+#guess_centers = np.array([[150, 200], [300, 230], [425, 193], [250, 250], [375, 280], [225, 250]])
 
 which_cluster = []  # store which cluster each point belongs to
 
@@ -120,25 +132,3 @@ for x in range(times):
     fig.add_trace(go.Scatter(x=all_x_values, y=all_y_values, mode='markers', marker=dict(color=all_colour, size=5)))
     fig.add_trace(go.Scatter(x=[center[0] for center in guess_centers], y=[center[1] for center in guess_centers],mode='markers',marker=dict(color='pink', size=20, symbol='square')))
     fig.show(config={'displayModeBar': False})
-'''
-for i in range (times):
-    fig.data = []  # Clear the figure
-    which_cluster = []
-
-    assign_to_cluster(guess_centers, all_x_values, all_y_values)
-
-    # Update the colors of all data points
-    fig.add_trace(go.Scatter(x=all_x_values, y=all_y_values, mode='markers', marker=dict(color=all_colour, size=5)))
-
-    for i in range(k):
-        fig.add_trace(go.Scatter(x=guess_centers[i][0], y=guess_centers[i][0], mode='markers', marker=dict(color=color[i], size=20)))
-
-    fig.show(config={'displayModeBar': False})
-    print('showing the ', i+1, 'time, k-mean data')
-
-    for i in range(k):
-        guess_centers[i][0] = cluster_x[i] / len(all_x_values)
-        guess_centers[i][1] = cluster_y[i] / len(all_y_values)
-
-
-'''
