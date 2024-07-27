@@ -17,6 +17,27 @@ This visualization allows us to see how the data points are grouped into the dif
 
 ## 🔢 grouping datas
   controlled is typed wrong sor
-    ![](controled_data_random_center1.png)
+    ![](image/controled_data_random_center1.png)
+    ![](image/controled_data_random_center2.png)
+    ![](image/controled_data_random_center3.png)
+    ![](image/controled_data_random_center4.png)
+    ![](image/controled_data_random_center5.png)
+    ![](image/controled_data_random_center6.png)
+
+
+    
+## grouping random data by random initail center
+    ![](image/random_data_random_center1.png)
+    ![](image/random_data_random_center2.png)
+    ![](image/random_data_random_center3.png)
+    ![](image/random_data_random_center4.png)
+    ![](image/random_data_random_center5.png)
+    ![](image/random_data_random_center6.png)
+  
+
+
+
+
+
   
     
