@@ -118,7 +118,7 @@ for x in range(times):
 
      # Update the colors of all data points
     fig.add_trace(go.Scatter(x=all_x_values, y=all_y_values, mode='markers', marker=dict(color=all_colour, size=5)))
-
+    fig.add_trace(go.Scatter(x=[center[0] for center in guess_centers], y=[center[1] for center in guess_centers],mode='markers',marker=dict(color='pink', size=20, symbol='square')))
     fig.show(config={'displayModeBar': False})
 '''
 for i in range (times):
