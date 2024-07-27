@@ -115,7 +115,8 @@ for i in range (times):
         fig.add_trace(go.Scatter(x=guess_centers[i][0], y=guess_centers[i][0], mode='markers', marker=dict(color=color[i], size=20)))
 
     fig.show(config={'displayModeBar': False})
-
+    print('showing the ', i+1, 'time, k-mean data')
+          
     # Remove the traces for the guess centers
     for i in range(len(guess_centers)):
         fig.data.pop(1)  # Remove the second trace (index 1) each time
