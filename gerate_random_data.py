@@ -34,8 +34,9 @@ all_colour =[]
 
 #######    generate two dimentional data for k-mean algorithm!!!!!
 fig = go.Figure()
-color = ['red', 'blue', 'yellow', 'purple', 'black', 'green']
+color = ['red', 'blue', 'orange', 'purple', 'black', 'green']
 
+'''
 #input an array of centers, an array of radius, number of point, 
 def generate_data(num_of_points, center_x, center_y, radius, color):
     x_values = [0] * num_of_points  # create x and y arrays of all 0 of size of num of points
@@ -49,10 +50,19 @@ def generate_data(num_of_points, center_x, center_y, radius, color):
         all_x_values.append(x_values[i])   # return all data points in one x and y array
         all_y_values.append(y_values[i]) 
     
-  
+'''
+
+    
+
+
+num_points = 600
+all_x_values = np.random.randint(50, 450, size=num_points)
+all_y_values = np.random.randint(50, 450, size=num_points)
+fig.add_trace(go.Scatter(x=all_x_values, y=all_y_values, mode='markers', marker=dict(color=color, size=5)))
+
     
     # Update the figure
-    fig.update_layout(
+fig.update_layout(
     title='circle data', 
     xaxis=dict(
             range=[0, 500],
@@ -72,7 +82,7 @@ def generate_data(num_of_points, center_x, center_y, radius, color):
         x=0.02,
         y=0.95),
     margin = dict(t=0, b=0, l=0, r=0)
-    )
+)
 
 
 def assign_to_cluster(guess_centers, x, y):
@@ -101,11 +111,11 @@ def assign_to_cluster(guess_centers, x, y):
 
 
 
-
+'''
 for i in range(6):
     generate_data(num_of_points, center_x[i], center_y[i], radius, color[i])
 
-
+'''
 '''
 for x, y in zip(all_x_values, all_y_values):
     print(f"x: {x:.2f}, y: {y:.2f}")
