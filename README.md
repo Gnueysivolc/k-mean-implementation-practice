@@ -16,9 +16,7 @@ This visualization allows us to see how the data points are grouped into the dif
 
 
 ## 🔢 grouping datas
-  <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-  <img src="controled_data_and_center1.png" alt="Photo 1" style="width: 300px; margin: 10px;">
-  <img src="controled_data_and_center2.png" alt="Photo 2" style="width: 300px; margin: 10px;">
-  <img src="controled_data_and_center3.png" alt="Photo 3" style="width: 300px; margin: 10px;">
-  <img src="controled_data_and_center4.png" alt="Photo 4" style="width: 300px; margin: 10px;">
-</div>
+  controlled is typed wrong sor
+    ![](controled_data_random_center1.png)
+  
+    
