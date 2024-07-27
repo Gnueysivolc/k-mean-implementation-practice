@@ -36,9 +36,10 @@ def generate_data(num_of_points, center_x, center_y, radius, color):
     for i in range(num_of_points):
         x_values[i] = center_x + length[i] * np.cos(theta[i])  # x = center * random length and random angle
         y_values[i] = center_y + length[i] * np.sin(theta[i])  # y = center * random length and random angle
+        fig.add_trace(go.Scatter(x=x_values, y=y_values, mode='markers', marker=dict(color=color, size=5)))
         all_x_values.extend(x_values)   # return all data points in one x and y array
         all_y_values.extend(y_values) 
-        fig.add_trace(go.Scatter(x=all_x_values, y=all_y_values, mode='markers', marker=dict(color=color, size=5)))
+    
   
     
     # Update the figure
@@ -99,6 +100,7 @@ for x, y in zip(all_x_values, all_y_values):
 '''
 
 fig.show(config={'displayModeBar': False})
+
 
 print('showing the first time, random data')
 
