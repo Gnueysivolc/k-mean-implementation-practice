@@ -16,7 +16,6 @@ This visualization allows us to see how the data points are grouped into the dif
 
 
 ## 🔢 grouping datas
-  controlled is typed wrong sor
     ![](image/controled_data_random_center1.png)
     ![](image/controled_data_random_center2.png)
     ![](image/controled_data_random_center3.png)
