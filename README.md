@@ -16,7 +16,7 @@ This visualization allows us to see how the data points are grouped into the dif
 
 
 ## 🔢 grouping datas
-    ![](image/controled_data_random_center1.png)
+ ![](image/controled_data_random_center1.png)
     ![](image/controled_data_random_center2.png)
     ![](image/controled_data_random_center3.png)
     ![](image/controled_data_random_center4.png)
@@ -26,7 +26,7 @@ This visualization allows us to see how the data points are grouped into the dif
 
     
 ## grouping random data by random initail center
-    ![](image/random_data_random_center1.png)
+ ![](image/random_data_random_center1.png)
     ![](image/random_data_random_center2.png)
     ![](image/random_data_random_center3.png)
     ![](image/random_data_random_center4.png)
